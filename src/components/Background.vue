@@ -1,5 +1,5 @@
 <template>
-  <div class="cover">
+  <div :class="store.backgroundShow ? 'cover show' : 'cover'">
     <img
       v-show="store.imgLoadStatus"
       class="bg"
@@ -43,9 +43,9 @@ const changeBg = (type) => {
   } else if (type == 1) {
     bgUrl.value = "https://api.dujin.org/bing/1920.php";
   } else if (type == 2) {
-    bgUrl.value = "https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images";
+    bgUrl.value = "https://api.aixiaowai.cn/gqapi/gqapi.php";
   } else if (type == 3) {
-    bgUrl.value = "https://api.btstu.cn/sjbz/api.php?lx=dongman&format=images";
+    bgUrl.value = "https://api.aixiaowai.cn/api/api.php";
   }
 };
 
@@ -98,6 +98,10 @@ onBeforeUnmount(() => {
   height: 100%;
   transition: 0.25s;
   z-index: -1;
+
+  &.show {
+    z-index: 1;
+  }
 
   .bg {
     position: absolute;
